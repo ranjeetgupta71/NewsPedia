@@ -1,13 +1,16 @@
 import './App.css';
 
 import React, { Component } from 'react'
+import Navbar from './components/Navbar';
+import News from './components/News';
 
 export default class App extends Component {
   render() {
-    c = John
+
     return (
       <div>
-        hello my {this.c}
+          <Navbar/>
+          <News pageSize={5}/>
       </div>
     )
   }
