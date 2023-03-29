@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 export default class navbar extends Component {
   render() {
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
-            <a className="navbar-brand" href="/">
+            <Link className="navbar-brand" to="/">
               NewsPedia
-            </a>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -23,46 +23,46 @@ export default class navbar extends Component {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link" aria-current="page" href="/">
+                  <Link className="nav-link" aria-current="page" to="/">
                     Home
-                  </a>
+                  </Link>
                 </li>
 
                 <li className="nav-item">
-                  <a className="nav-link" href="/About">
+                  <Link className="nav-link" to="/about">
                     About Us
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/Business">
+                  <Link className="nav-link" to="/business">
                     Business
-                  </a>
+                  </Link>
                 </li>
 
                 <li className="nav-item">
-                  <a className="nav-link" href="/technology">
+                  <Link className="nav-link" to="/technology">
                     Entertainment
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/general">
+                  <Link className="nav-link" to="/general">
                     General
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/health">
+                  <Link className="nav-link" to="/health">
                     Health
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/sports">
+                  <Link className="nav-link" to="/sports">
                     Sports
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/technology">
+                  <Link className="nav-link" to="/technology">
                     Technology
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
