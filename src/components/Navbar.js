@@ -27,10 +27,9 @@ export default class navbar extends Component {
                     Home
                   </Link>
                 </li>
-
                 <li className="nav-item">
-                  <Link className="nav-link" to="/about">
-                    About Us
+                  <Link className="nav-link" to="/general">
+                    General
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -38,17 +37,18 @@ export default class navbar extends Component {
                     Business
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/science">
+                    Science
+                  </Link>
+                </li>
 
                 <li className="nav-item">
-                  <Link className="nav-link" to="/technology">
+                  <Link className="nav-link" to="/entertainment">
                     Entertainment
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/general">
-                    General
-                  </Link>
-                </li>
+
                 <li className="nav-item">
                   <Link className="nav-link" to="/health">
                     Health

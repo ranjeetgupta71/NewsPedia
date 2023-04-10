@@ -26,7 +26,6 @@ export default class News extends Component {
   }
 
   async componentDidMount() {
-    console.log('this.props', this.props);
     // it is lifecycle method, runs after render method
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=9b19a7bfe25b401f883fa706fe3c5339&page=1&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
@@ -86,7 +85,15 @@ export default class News extends Component {
             this.state.articles.map((element) => {
               return (
                 <div className="col-md-4" key={element.url}>
-                  <NewsItem title={element.title} description={element.description} imageUrl={element.urlToImage} newsUrl={element.url} />
+                  <NewsItem
+                    title={element.title}
+                    description={element.description}
+                    imageUrl={element.urlToImage}
+                    newsUrl={element.url}
+                    author={element.author}
+                    date={element.publishedAt}
+                    source={element.source.name}
+                  />
                 </div>
               );
             })}
