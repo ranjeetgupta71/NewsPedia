@@ -15,69 +15,54 @@ export default class News extends Component {
     category: PropTypes.string,
   };
 
-  constructor() {
-    super();
-    // console.log("hello im constructor from news component");
+  capitaliseFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+  constructor(props) {
+    super(props);
+
     this.state = {
       articles: [],
       loading: false,
       page: 1,
     };
+    document.title = `${this.capitaliseFirstLetter(this.props.category)} - NewsPedia`;
   }
 
-  async componentDidMount() {
-    // it is lifecycle method, runs after render method
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=9b19a7bfe25b401f883fa706fe3c5339&page=1&pageSize=${this.props.pageSize}`;
+  async updateNews() {
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=9b19a7bfe25b401f883fa706fe3c5339&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
-    console.log(parsedData);
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading: false,
     });
-    console.log(this.loading);
+  }
+
+  async componentDidMount() {
+    // it is lifecycle method, runs after render method
+    this.updateNews();
   }
 
   handleNextClick = async () => {
-    if (!(this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize))) {
-      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${
-        this.props.category
-      }&apiKey=9b19a7bfe25b401f883fa706fe3c5339&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
-      this.setState({ loading: true });
-      let data = await fetch(url);
-      let parsedData = await data.json();
-      console.log(parsedData);
-
-      console.log(this.loading);
-      this.setState({
-        page: this.state.page + 1,
-        articles: parsedData.articles,
-        loading: false,
-      });
-    }
+    await this.setState({
+      page: this.state.page + 1,
+    });
+    this.updateNews();
   };
   handlePrevClick = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${
-      this.props.category
-    }&apiKey=9b19a7bfe25b401f883fa706fe3c5339&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
-    this.setState({ loading: true });
-    let data = await fetch(url);
-    let parsedData = await data.json();
-    console.log(parsedData);
-
-    this.setState({
+    await this.setState({
       page: this.state.page - 1,
-      articles: parsedData.articles,
-      loading: false,
     });
+    this.updateNews();
   };
   render() {
     return (
       <div className="container my-3">
         <h1 className="text-center" style={{ margin: '33px' }}>
-          NewsPedia - Top HeadLines
+          NewsPedia - Top {this.capitaliseFirstLetter(this.props.category)} HeadLines
         </h1>
         {this.state.loading && <Spinner />}
         <div className="row">
