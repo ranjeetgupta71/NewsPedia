@@ -48,7 +48,7 @@ const News = (props) => {
 
   return (
     <>
-      <h1 className="text-center" style={{ margin: '33px' }}>
+      <h1 className="text-center" style={{ margin: '33px', marginTop: '90px' }}>
         NewsPedia - Top {capitaliseFirstLetter(props.category)} HeadLines
       </h1>
       {loading && <Spinner />}
@@ -56,8 +56,6 @@ const News = (props) => {
         <div className="container">
           <div className="row">
             {!loading &&
-              // // {articles.map((element,index) => {
-              //  return <div className="col-md-4" key = {index}></div>
               articles.map((element, index) => {
                 return (
                   <div className="col-md-4" key={index}>
